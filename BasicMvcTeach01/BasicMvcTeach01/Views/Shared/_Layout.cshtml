@@ -21,7 +21,31 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+                    <li class="nav">
+                    </li>
                 </ul>
+                <div class="navbar-right">
+                    <ul class="nav navbar-nav">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav ">
+                                <a>
+                                    Welcome @User.Identity.Name !
+                                </a>
+
+                            </li>
+                            <li class="nav ">
+                                @Html.ActionLink("SignOut", "SignOut", "Account")
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav ">
+                                @Html.ActionLink("SignIn", "SignIn", "Account")
+                            </li>
+                        }
+                    </ul>
+                </div>
             </div>
         </div>
     </div>

@@ -43,7 +43,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -95,8 +103,25 @@
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Models\Entities\NorthWindModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NorthWindModel.Context.cs</LastGenOutput>
+      <DependentUpon>NorthWindModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\Entities\NorthWindModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NorthWindModel.edmx</DependentUpon>
+      <LastGenOutput>NorthWindModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\Entities\NorthWindModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>NorthWindModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Entities\NorthWindModel.edmx.diagram">
+      <DependentUpon>NorthWindModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -110,6 +135,57 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\Categories.cs">
+      <DependentUpon>NorthWindModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\CustomerDemographics.cs">
+      <DependentUpon>NorthWindModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\Customers.cs">
+      <DependentUpon>NorthWindModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\Employees.cs">
+      <DependentUpon>NorthWindModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\Member.cs">
+      <DependentUpon>NorthWindModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\NorthWindModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NorthWindModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\NorthWindModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NorthWindModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\NorthWindModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NorthWindModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\Orders.cs">
+      <DependentUpon>NorthWindModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\Order_Details.cs">
+      <DependentUpon>NorthWindModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\Products.cs">
+      <DependentUpon>NorthWindModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\Region.cs">
+      <DependentUpon>NorthWindModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\Shippers.cs">
+      <DependentUpon>NorthWindModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\Suppliers.cs">
+      <DependentUpon>NorthWindModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\Territories.cs">
+      <DependentUpon>NorthWindModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -138,7 +214,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

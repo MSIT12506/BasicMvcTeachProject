@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace BasicMvcTeach01.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         // GET: Home

@@ -27,8 +27,17 @@ namespace BasicMvcTeach01.Controllers
             if (member == null)
             {
                 // 帳號不存在時回傳錯誤訊息
-                ModelState.AddModelError(nameof(LoginModel.Account),"帳號部存在");       
+                ModelState.AddModelError(nameof(LoginModel.Account),"帳號不存在");
+                return View();
             }
+
+            if (member.Password != loginModel.Password)
+            {
+                ModelState.AddModelError(nameof(LoginModel.Password),"密碼錯誤");
+                return View();
+            }
+
+
 
             return View();
         }

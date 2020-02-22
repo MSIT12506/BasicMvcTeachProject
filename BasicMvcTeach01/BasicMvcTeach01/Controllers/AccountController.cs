@@ -20,6 +20,11 @@ namespace BasicMvcTeach01.Controllers
         [HttpPost]
         public ActionResult SignIn(LoginModel loginModel)
         {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
             // 取得北風會員帳號
             var northWindEntities = new NorthWindEntities();
             var member = northWindEntities.Member.FirstOrDefault(p => p.Account == loginModel.Account);

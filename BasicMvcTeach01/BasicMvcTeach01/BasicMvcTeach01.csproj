@@ -129,6 +129,7 @@
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Web.config" />
+    <Content Include="Views\Account\SignIn.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -188,6 +189,7 @@
     <Compile Include="Models\Entities\Territories.cs">
       <DependentUpon>NorthWindModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ViewModel\LoginModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -215,7 +217,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Account\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

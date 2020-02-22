@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using BasicMvcTeach01.Models.Entities;
 using BasicMvcTeach01.Models.ViewModel;
 
@@ -38,6 +39,20 @@ namespace BasicMvcTeach01.Controllers
             }
 
 
+            // 登入憑證建立
+            var ticket = new FormsAuthenticationTicket(
+                    version: 1,
+                    name: member.UserName,
+                    DateTime.UtcNow,
+                    DateTime.UtcNow.AddMinutes(10),
+                    true, "",
+                    FormsAuthentication.FormsCookiePath);
+            // 加密登入憑證
+            var encryptTicket = FormsAuthentication.Encrypt(ticket);
+            // 將加密後的登入憑證轉為cookie型別
+            var ticketCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptTicket);
+            // 加入cookie
+            Response.Cookies.Add(ticketCookie);
 
             return View();
         }

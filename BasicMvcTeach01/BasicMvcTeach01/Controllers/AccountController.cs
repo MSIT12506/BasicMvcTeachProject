@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BasicMvcTeach01.Models.ViewModel;
 
 namespace BasicMvcTeach01.Controllers
 {
@@ -10,6 +11,12 @@ namespace BasicMvcTeach01.Controllers
     {
         // GET: Account
         public ActionResult SignIn()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult SighIn(LoginModel loginModel)
         {
             return View();
         }

@@ -35,6 +35,7 @@ namespace BasicMvcTeach01.Controllers
 
             // 取得北風會員帳號
             var member = _memberRepository.GetMember(loginModel.Account);
+
             // 判斷帳號是否存在
             if (member == null)
             {
@@ -67,7 +68,7 @@ namespace BasicMvcTeach01.Controllers
             // 加入cookie
             Response.Cookies.Add(ticketCookie);
 
-            return View();
+            return RedirectToAction("Index", "Home");
         }
     }
 }

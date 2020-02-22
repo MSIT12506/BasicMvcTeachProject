@@ -5,12 +5,20 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using BasicMvcTeach01.Models.Entities;
+using BasicMvcTeach01.Models.LibraryMember;
 using BasicMvcTeach01.Models.ViewModel;
 
 namespace BasicMvcTeach01.Controllers
 {
     public class AccountController : Controller
     {
+        private MemberRepository _memberRepository;
+
+        public AccountController()
+        {
+            _memberRepository = new MemberRepository();
+        }
+
         // GET: Account
         public ActionResult SignIn()
         {
@@ -26,9 +34,7 @@ namespace BasicMvcTeach01.Controllers
             }
 
             // 取得北風會員帳號
-            var northWindEntities = new NorthWindEntities();
-            var member = northWindEntities.Member.FirstOrDefault(p => p.Account == loginModel.Account);
-
+            var member = _memberRepository.GetMember(loginModel.Account);
             // 判斷帳號是否存在
             if (member == null)
             {
@@ -37,8 +43,10 @@ namespace BasicMvcTeach01.Controllers
                 return View();
             }
 
+            // 判斷密碼是否相符
             if (member.Password != loginModel.Password)
             {
+                // 密碼錯誤時將錯誤訊息回傳
                 ModelState.AddModelError(nameof(LoginModel.Password),"密碼錯誤");
                 return View();
             }

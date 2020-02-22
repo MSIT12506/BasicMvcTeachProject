@@ -189,6 +189,7 @@
     <Compile Include="Models\Entities\Territories.cs">
       <DependentUpon>NorthWindModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\LibraryMember\MemberRepository.cs" />
     <Compile Include="Models\ViewModel\LoginModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

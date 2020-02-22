@@ -16,7 +16,7 @@ namespace BasicMvcTeach01.Controllers
         }
 
         [HttpPost]
-        public ActionResult SighIn(LoginModel loginModel)
+        public ActionResult SignIn(LoginModel loginModel)
         {
             return View();
         }

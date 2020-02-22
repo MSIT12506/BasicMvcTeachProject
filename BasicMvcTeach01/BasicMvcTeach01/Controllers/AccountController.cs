@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BasicMvcTeach01.Models.Entities;
 using BasicMvcTeach01.Models.ViewModel;
 
 namespace BasicMvcTeach01.Controllers
@@ -18,6 +19,17 @@ namespace BasicMvcTeach01.Controllers
         [HttpPost]
         public ActionResult SignIn(LoginModel loginModel)
         {
+            // 取得北風會員帳號
+            var northWindEntities = new NorthWindEntities();
+            var member = northWindEntities.Member.FirstOrDefault(p => p.Account == loginModel.Account);
+
+            // 判斷帳號是否存在
+            if (member == null)
+            {
+                // 帳號不存在時回傳錯誤訊息
+                ModelState.AddModelError(nameof(LoginModel.Account),"帳號部存在");       
+            }
+
             return View();
         }
     }
